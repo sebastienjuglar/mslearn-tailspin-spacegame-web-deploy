@@ -84,7 +84,7 @@ stages:
       eq(variables['Build.SourceBranchName'], variables['releaseBranchName'])
     )
   jobs:
-  - deployment: Deploy to Dev
+  - deployment: Deploy_Dev
     pool:
       vmImage: 'ubuntu-16.04'
     environment: dev
@@ -108,7 +108,7 @@ stages:
   dependsOn: Dev
   #condition: eq(variables['Build.Reason'], 'Schedule')
   jobs:
-  - deployment: Deploy to Test
+  - deployment: Deploy_Test
     pool:
       vmImage: 'ubuntu-16.04'
     environment: test
@@ -131,7 +131,7 @@ stages:
   displayName: 'Deploy to the staging environment'
   dependsOn: Test
   jobs:
-  - deployment: Deploy to Staging
+  - deployment: Deploy_Staging
     pool:
       vmImage: 'ubuntu-16.04'
     environment: staging
